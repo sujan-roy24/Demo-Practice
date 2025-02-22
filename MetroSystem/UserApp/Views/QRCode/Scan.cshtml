@@ -1,0 +1,195 @@
+﻿@* Views/QRCode/Scan.cshtml *@
+@{
+    ViewData["Title"] = "Scan QR Code";
+}
+
+<div class="container mx-auto p-4">
+    <h2 class="text-2xl mb-4">QR Code Scanner</h2>
+
+    <!-- Tab Navigation -->
+    <div class="mb-4">
+        <button id="cameraTab" class="px-4 py-2 bg-blue-500 text-white rounded-l">Camera</button>
+        <button id="uploadTab" class="px-4 py-2 bg-gray-300 rounded-r">Upload Image</button>
+    </div>
+
+    <!-- Camera Scanner -->
+    <div id="cameraSection">
+        <div id="reader" class="mb-4"></div>
+        <button id="startButton" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
+            Start Camera
+        </button>
+        <button id="stopButton" class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 hidden">
+            Stop Camera
+        </button>
+    </div>
+
+    <!-- File Upload -->
+    <div id="uploadSection" class="hidden">
+        <div class="mb-4">
+            <input type="file"
+                   id="fileInput"
+                   accept="image/*"
+                   class="mb-2 block w-full text-sm text-gray-500
+                          file:mr-4 file:py-2 file:px-4
+                          file:rounded-full file:border-0
+                          file:text-sm file:font-semibold
+                          file:bg-blue-50 file:text-blue-700
+                          hover:file:bg-blue-100" />
+        </div>
+    </div>
+
+    <!-- Results -->
+    <div id="result" class="hidden mt-4">
+        <div class="bg-green-100 p-4 rounded">
+            <h3 class="text-xl mb-2">QR Code Information:</h3>
+            <p id="userId"></p>
+            <p id="phone"></p>
+            <p id="expiration"></p>
+        </div>
+    </div>
+
+    <div id="error" class="hidden mt-4">
+        <div class="bg-red-100 p-4 rounded">
+            <p id="errorMessage" class="text-red-600"></p>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5-qrcode/2.3.8/html5-qrcode.min.js"></script>
+
+    <script>
+        let html5QrCode;
+
+        const config = {
+            fps: 10,
+            qrbox: { width: 250, height: 250 },
+            aspectRatio: 1.0
+        };
+
+        function initializeScanner() {
+            html5QrCode = new Html5Qrcode("reader");
+
+            // Tab switching
+            document.getElementById('cameraTab').addEventListener('click', () => switchTab('camera'));
+            document.getElementById('uploadTab').addEventListener('click', () => switchTab('upload'));
+
+            // Camera controls
+            document.getElementById('startButton').addEventListener('click', startScanning);
+            document.getElementById('stopButton').addEventListener('click', stopScanning);
+
+            // File upload
+            document.getElementById('fileInput').addEventListener('change', handleFileUpload);
+        }
+
+        function switchTab(tab) {
+            if (tab === 'camera') {
+                document.getElementById('cameraTab').classList.replace('bg-gray-300', 'bg-blue-500');
+                document.getElementById('uploadTab').classList.replace('bg-blue-500', 'bg-gray-300');
+                document.getElementById('cameraSection').classList.remove('hidden');
+                document.getElementById('uploadSection').classList.add('hidden');
+            } else {
+                document.getElementById('uploadTab').classList.replace('bg-gray-300', 'bg-blue-500');
+                document.getElementById('cameraTab').classList.replace('bg-blue-500', 'bg-gray-300');
+                document.getElementById('uploadSection').classList.remove('hidden');
+                document.getElementById('cameraSection').classList.add('hidden');
+                stopScanning();
+            }
+        }
+
+        async function startScanning() {
+            try {
+                const devices = await Html5Qrcode.getCameras();
+                if (devices && devices.length) {
+                    document.getElementById('startButton').classList.add('hidden');
+                    document.getElementById('stopButton').classList.remove('hidden');
+
+                    await html5QrCode.start(
+                        { facingMode: "environment" },
+                        config,
+                        onScanSuccess,
+                        onScanError
+                    );
+                } else {
+                    showError('No camera devices found');
+                }
+            } catch (err) {
+                showError(`Camera error: ${err.message}`);
+            }
+        }
+
+        async function stopScanning() {
+            try {
+                if (html5QrCode?.isScanning) {
+                    await html5QrCode.stop();
+                    document.getElementById('startButton').classList.remove('hidden');
+                    document.getElementById('stopButton').classList.add('hidden');
+                }
+            } catch (err) {
+                console.error('Stop scanner error:', err);
+            }
+        }
+
+        async function handleFileUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            try {
+                const result = await html5QrCode.scanFile(file, true);
+                onScanSuccess(result);
+            } catch (err) {
+                showError('Could not read QR code from image. Please try another image.');
+            }
+        }
+
+        function onScanSuccess(decodedText) {
+            // Stop scanning if using camera
+            if (html5QrCode?.isScanning) {
+                stopScanning();
+            }
+
+            // Validate QR code with server
+            fetch('/QRCode/ValidateQRCode', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]').value
+                },
+                body: JSON.stringify(decodedText)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.isValid) {
+                    document.getElementById('result').classList.remove('hidden');
+                    document.getElementById('error').classList.add('hidden');
+
+                    document.getElementById('userId').textContent = `User ID: ${data.userId}`;
+                    document.getElementById('phone').textContent = `Phone: ${data.phone}`;
+
+                    const expiration = new Date(data.expirationTime);
+                    document.getElementById('expiration').textContent =
+                        `Expires: ${expiration.toLocaleString()}`;
+                } else {
+                    showError(data.error || 'Invalid QR code');
+                }
+            })
+            .catch(error => {
+                console.error('Validation error:', error);
+                showError('Failed to validate QR code');
+            });
+        }
+
+        function onScanError(error) {
+            console.debug('Scan error:', error);
+        }
+
+        function showError(message) {
+            document.getElementById('result').classList.add('hidden');
+            document.getElementById('error').classList.remove('hidden');
+            document.getElementById('errorMessage').textContent = message;
+        }
+
+        // Initialize when the page loads
+        document.addEventListener('DOMContentLoaded', initializeScanner);
+    </script>
+}

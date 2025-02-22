@@ -1,0 +1,35 @@
+﻿@{
+    ViewData["Title"] = "QR Code";
+}
+
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header">
+            <h3>QR Code</h3>
+        </div>
+        <div class="card-body text-center">
+            @if (Model != null)
+            {
+                <!-- QR Code Image -->
+                <div class="mb-3">
+                    <img src="data:image/png;base64,@Model"
+                         alt="QR Code"
+                         style="max-width: 300px;"
+                         class="img-fluid" />
+                </div>
+
+                <!-- Button -->
+                <a href="@Url.Action("Generate")" class="btn btn-primary">
+                    Generate New QR Code
+                </a>
+            }
+            else
+            {
+                <p>No QR Code available.</p>
+                <a href="@Url.Action("Generate")" class="btn btn-primary">
+                    Generate QR Code
+                </a>
+            }
+        </div>
+    </div>
+</div>

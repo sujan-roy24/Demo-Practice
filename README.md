@@ -42,8 +42,7 @@ It leverages **secure QR codes** and **real-time caching** to provide a **fast, 
 - **Enhance security** and **reduce operational costs**.
 
 ---
-
-# 🌐 Live Demo
+## 🌐 Live Demo
 Experience QR Code Metro Based Ticketing System in action by visiting our live demo:
 
 [![Live Demo](https://img.shields.io/badge/View%20Live-Click%20Here-brightgreen?style=for-the-badge&logo=googlechrome&logoColor=white)](https://dhakametro.bsite.net/)
@@ -58,48 +57,51 @@ Follow these steps to set up the project locally:
 - [Redis 7.4.2](https://redis.io/download)
 - [Visual Studio 2022](https://visualstudio.microsoft.com/)
 
+### ⚙️Setup Configuration
+1. **Clone the repository:**
+   ```sh
+   git clone https://github.com/Learnathon-By-Geeky-Solutions/netninjas.git
+   cd netninjas
+   ```
+2. **Configuration Settings:**
+    ```sh
+    {
+      "ConnectionStrings": {
+        "DefaultConnection":"your_sql_server_connection_string",
+        "RedisConnectionString": "your_redis_connection_string"
+      },
+      "AdminSettings": {
+        "DefaultEmail": "admin@gmail.com",
+        "DefaultPassword": "admin123"
+      },
+      "EmailSettings": {
+        "SmtpServer": "your-SmtpServer",
+        "SmtpPort": your-SmtpPort,
+        "SmtpUsername": "your-SmtpUsername",
+        "SmtpPassword": "your-SmtpPassword",
+      },
+      "JwtSettings": {
+        "SecretKey": "your-SecretKey",
+      },
+      "QRCodeSecretKey": "your-QRCodeSecretKey"
+    }
+    ```
+3. **Database Setup:**
+   - Run the SQL migration to set up the database schema:
+     ```sh
+     dotnet ef database update
+     ```
+4. **Build and Run the Application**
+   - Now you are ready to build and run the project:
+     ```sh
+     dotnet build
+     dotnet run
+      ```
+   - After building and running, open your browser and go to:
+     ```sh
+     https://localhost:5001
+     ```
 ---
-
-### Clone the Repository
-```bash
-git clone https://github.com/your-repo/metro-ticketing.git
-cd metro-ticketing
-```
-## ⚙️ Configuration Settings
-
-### `appsettings.json` Structure
-
-```json
-{
-  "AllowedHosts": "*",
-  "ConnectionStrings": {
-    "DefaultConnection": "your_sql_server_connection_string",
-    "RedisConnectionString": "your_redis_connection_string"
-  },
-  "AdminSettings": {
-    "DefaultEmail": "admin@gmail.com",
-    "DefaultPassword": "admin123"
-  },
-  "EmailSettings": {
-    "SmtpServer": "smtp.gmail.com",
-    "SmtpPort": 587,
-    "SmtpUsername": "example@gmail.com",
-    "SmtpPassword": "your-gmail-app-password",
-    "SenderEmail": "noreply@dhakametrorail.com",
-    "SenderName": "Dhaka Metro Rail"
-  }
-}
-```
-## 🌟 Features
-
-- **QR Code Tickets**: Paperless digital tickets with expiry validation
-- **Real-time Fare Calculation**: Distance-based pricing engine
-- **Multi-Payment Integration**: BKash, Nagad, Visa/Mastercard
-- **Admin Dashboard**: Station, fare, and user management
-- **Wallet System**: Balance storage and transaction history
-- **JWT Authentication**: Secure API access control
-- **Redis Caching**: High-performance ticket validation
-
 ## 🛠️ Tech Stack
 
 ### Backend

@@ -48,8 +48,48 @@ Experience QR Code Metro Based Ticketing System in action by visiting our live d
 
 [![Live Demo](https://img.shields.io/badge/View%20Live-Click%20Here-brightgreen?style=for-the-badge&logo=googlechrome&logoColor=white)](https://dhakametro.bsite.net/)
 
+## 🛠️ Installation Instructions
 
+Follow these steps to set up the project locally:
 
+### Prerequisites
+- [.NET 8.0 SDK](https://dotnet.microsoft.com/download)
+- [SQL Server 2022](https://www.microsoft.com/sql-server)
+- [Redis 7.4.2](https://redis.io/download)
+- [Visual Studio 2022](https://visualstudio.microsoft.com/)
+
+---
+
+### Clone the Repository
+```bash
+git clone https://github.com/your-repo/metro-ticketing.git
+cd metro-ticketing
+```
+## ⚙️ Configuration Settings
+
+### `appsettings.json` Structure
+
+```json
+{
+  "AllowedHosts": "*",
+  "ConnectionStrings": {
+    "DefaultConnection": "your_sql_server_connection_string",
+    "RedisConnectionString": "your_redis_connection_string"
+  },
+  "AdminSettings": {
+    "DefaultEmail": "admin@gmail.com",
+    "DefaultPassword": "admin123"
+  },
+  "EmailSettings": {
+    "SmtpServer": "smtp.gmail.com",
+    "SmtpPort": 587,
+    "SmtpUsername": "example@gmail.com",
+    "SmtpPassword": "your-gmail-app-password",
+    "SenderEmail": "noreply@dhakametrorail.com",
+    "SenderName": "Dhaka Metro Rail"
+  }
+}
+```
 ## 🌟 Features
 
 - **QR Code Tickets**: Paperless digital tickets with expiry validation

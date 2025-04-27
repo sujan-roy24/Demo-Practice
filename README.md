@@ -48,21 +48,7 @@ Experience QR Code Metro Based Ticketing System in action by visiting our live d
 
 [![Live Demo](https://img.shields.io/badge/View%20Live-Click%20Here-brightgreen?style=for-the-badge&logo=googlechrome&logoColor=white)](https://dhakametro.bsite.net/)
 
-[Build Status](https://img.shields.io/badge/build-passing-brightgreen)(https://dhakametro.bsite.net/)
 
-![Build Status](https://img.shields.io/badge/build-passing-brightgreen)
-![License](https://img.shields.io/badge/license-MIT-blue)
-
-# 🚇 QR Code Based Metro Ticketing System
-
-[![.NET Core](https://img.shields.io/badge/.NET-8.0-blue)](https://dotnet.microsoft.com/)
-[![ASP.NET Core](https://img.shields.io/badge/ASP.NET_Core-8.0-blueviolet)](https://dotnet.microsoft.com/apps/aspnet)
-[![EF Core](https://img.shields.io/badge/EF_Core-8.0-red)](https://docs.microsoft.com/ef/core/)
-[![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
-
-A modern metro ticketing solution using QR codes for seamless access control, built with ASP.NET Core 8.0 and enterprise architecture patterns.
-
-![System Demo](demo.gif) <!-- Add your demo gif/image here -->
 
 ## 🌟 Features
 

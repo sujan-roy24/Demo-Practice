@@ -1,4 +1,4 @@
-# 🚇 QR Code Metro Based Ticketing System [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+# 🚇 QR Code Metro Based Ticketing System [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 ![.NET Version](https://img.shields.io/badge/.NET-8.0-%23512bd4) 
 ![ASP.NET Core](https://img.shields.io/badge/ASP.NET_Core-9.0-%23642DE4) 
@@ -23,7 +23,6 @@
 **Project Name:** QR-Based Metro Ticketing System  
 **Tech Stack:** ASP.NET MVC | C# | Entity Framework Core | SQL Server | Redis
 
----
 
 The **QR-Based Metro Ticketing System** is designed to simplify metro station operations by eliminating the need for physical tickets.  
 It leverages **secure QR codes** and **real-time caching** to provide a **fast, reliable, and secure** metro experience for passengers.
@@ -34,7 +33,6 @@ It leverages **secure QR codes** and **real-time caching** to provide a **fast, 
 - 🔄 Real-time **tracking**, **transaction handling**, and **fare calculation**.
 - 🛡️ Focus on **clean architecture**, **security**, and **scalability**.
 
----
 
 ✅ This project is ideal for organizations seeking to:
 - **Modernize** their metro ticketing systems.
@@ -47,6 +45,7 @@ Experience QR Code Metro Based Ticketing System in action by visiting our live d
 
 [![Live Demo](https://img.shields.io/badge/View%20Live-Click%20Here-brightgreen?style=for-the-badge&logo=googlechrome&logoColor=white)](https://dhakametro.bsite.net/)
 
+---
 ## 🛠️ Installation Instructions
 
 Follow these steps to set up the project locally:
@@ -99,33 +98,8 @@ Follow these steps to set up the project locally:
       ```
    - After building and running, open your browser and go to:
      ```sh
-     https://localhost:5001
+     https://localhost:7157
      ```
+   You should now be able to access the application locally.
 ---
-## 🛠️ Tech Stack
 
-### Backend
-| Component               | Technology |
-|-------------------------|------------|
-| Framework               | ASP.NET Core 8.0 MVC |
-| ORM                     | Entity Framework Core 8 |
-| Database                | SQL Server 2022 |
-| Caching                 | Redis |
-| Authentication          | JWT Bearer Tokens |
-| QR Generation           | QRCoder.NET |
-
-### Architecture
-
-## 🚀 Getting Started
-
-### Prerequisites
-- .NET 8.0 SDK
-- SQL Server 2019+
-- Redis Server
-- Visual Studio 2022 / VS Code
-
-### Installation
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/your-repo/metro-ticketing.git
-   cd metro-ticketing

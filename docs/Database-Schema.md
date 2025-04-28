@@ -21,7 +21,6 @@ This document describes the database schema for the QR Code Based Metro Ticketin
 | Wallets        | Stores user wallet balances for fare payment and ticket purchases.                               |
 | Transactions   | Stores wallet transaction records like top-ups, fare deductions, and penalties.                  |
 | SystemSettings | Stores system-wide settings like fare rates, ticket validity, and penalty fees.                  |
-| UserTokens     | Stores user tokens for email verification and password reset operations.                         |
 
 
 ## 🛡️ Indexes & Constraints

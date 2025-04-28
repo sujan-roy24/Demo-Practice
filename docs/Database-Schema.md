@@ -6,7 +6,7 @@ This document describes the database schema for the QR Code Based Metro Ticketin
 
 ## 📈 ER Diagram
 
-![](Images/er-diagram.PNG)
+![Alt](Images/scahema-diagram.png)
 
 ## 🧩Database Table Descriptions
 

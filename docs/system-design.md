@@ -27,29 +27,6 @@ The QR Code Metro Ticketing System is built to provide fast and secure metro ent
 | SystemSettings | Stores system-wide settings like fare rates, ticket validity, and penalty fees.                  |
 
 
-### 🛡️ Indexes & Constraints
- **Primary Keys:**
-  - Id column in every table.
- 
- **Foreign Keys:**
- 
-  - StationDistance.Station1Id, StationDistance.Station2Id → Station.Id
-  - Ticket.UserId → User.Id
-  - Ticket.OriginStationId → Station.Id
-  - Ticket.DestinationStationId → Station.Id
-  - Transaction.WalletId → Wallet.Id
-  - Trip.UserId → User.Id
-  - Trip.TicketId → Ticket.Id
-  - Trip.EntryStationId → Station.Id
-  - Trip.ExitStationId → Station.Id
-  - Wallet.UserId → User.Id
- 
- **Unique Constraints:**
-  - Admin.Email
-  - User.Email
-  - User.PhoneNumber
-  - User.NID
-
 ## 🎟️ Ticket Purchase Flow
 
 ```mermaid

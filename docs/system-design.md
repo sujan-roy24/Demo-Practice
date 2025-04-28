@@ -1,7 +1,7 @@
 
-# System Architecture
+# System Design
 
-## 1. System Overview
+## 1. System Architecture
 The QR Code Metro Ticketing System is built to provide fast and secure metro entry/exit using QR codes, leveraging .NET 8, Redis, and SQL Server.
 ![Alt text](Images/system-architecture-one.svg)
 ## 2. High-Level Architecture

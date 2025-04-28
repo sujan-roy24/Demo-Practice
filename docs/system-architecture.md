@@ -1,5 +1,6 @@
 
 # System Architecture
+![Alt text](system-achitecture.PNG)
 
 ## 1. System Overview
 The QR Code Metro Ticketing System is built to provide fast and secure metro entry/exit using QR codes, leveraging .NET 8, Redis, and SQL Server.
@@ -21,3 +22,4 @@ The QR Code Metro Ticketing System is built to provide fast and secure metro ent
 2. Frontend calls backend APIs to generate QR.
 3. Backend saves data in SQL Server and stores QR token in Redis.
 4. On metro entry/exit, QR is scanned, validated via Redis, and updates database if valid.
+![Alt text](er-diagram.PNG)

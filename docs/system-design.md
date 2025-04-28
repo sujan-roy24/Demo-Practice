@@ -1,25 +1,55 @@
 
 # System Design
 
-## 1. System Architecture
+## System Architecture
 The QR Code Metro Ticketing System is built to provide fast and secure metro entry/exit using QR codes, leveraging .NET 8, Redis, and SQL Server.
 ![Alt text](Images/system-architecture-one.svg)
-## 2. High-Level Architecture
-- User Interface: ASP.NET MVC application.
-- Backend: ASP.NET Core services.
-- Database: SQL Server 2022 for storing user, station, and ticket information.
-- Caching Layer: Redis for fast QR validation and session storage.
 
-## 3. Component Descriptions
-- **Frontend (MVC App):** Provides user interfaces for ticket generation, validation, and administration.
-- **Backend (Services):** Handles business logic, authentication, QR code management, and database operations.
-- **SQL Server:** Stores persistent data such as users, stations, trips, and transaction history.
-- **Redis:** Temporarily stores active QR codes and session tokens for fast retrieval.
+## 📄 Database Schema
 
-## 4. Data Flow
-1. User requests a QR ticket from the frontend.
-2. Frontend calls backend services to generate QR.
-3. Backend saves data in SQL Server and stores QR token in Redis.
-4. On metro entry/exit, QR is scanned, validated via Redis, and updates database if valid.
+## Overview
+This document describes the database schema for the QR Code Based Metro Ticketing System, including the ER diagram, detailed table descriptions, and indexes & constraints.
 
+## 📈 ER Diagram
+
+![Alt](Images/scahema-diagram.png)
+
+
+## 🧩Database Table Descriptions
+
+| Table           | Description                                                                                     |
+|----------------|-------------------------------------------------------------------------------------------------|
+| Users          | Stores passenger information including authentication and profile data        |
+| Admins         | Stores admin credentials and access logs.                                              |
+| Stations       | Stores metro station information like name, address, coordinates, and display order.             |
+| StationDistances | Stores distance data between two stations for fare calculation.                               |
+| Tickets        | Stores ticket details including journey info, fare, QR code metadata, and ticket status.         |
+| Trips          | Stores trip records including entry/exit stations, timings, fare, and trip status.               |
+| Wallets        | Stores user wallet balances for fare payment and ticket purchases.                               |
+| Transactions   | Stores wallet transaction records like top-ups, fare deductions, and penalties.                  |
+| SystemSettings | Stores system-wide settings like fare rates, ticket validity, and penalty fees.                  |
+
+
+## 🛡️ Indexes & Constraints
+**Primary Keys:**
+ - Id column in every table.
+
+**Foreign Keys:**
+
+ - StationDistance.Station1Id, StationDistance.Station2Id → Station.Id
+ - Ticket.UserId → User.Id
+ - Ticket.OriginStationId → Station.Id
+ - Ticket.DestinationStationId → Station.Id
+ - Transaction.WalletId → Wallet.Id
+ - Trip.UserId → User.Id
+ - Trip.TicketId → Ticket.Id
+ - Trip.EntryStationId → Station.Id
+ - Trip.ExitStationId → Station.Id
+ - Wallet.UserId → User.Id
+
+**Unique Constraints:**
+ - Admin.Email
+ - User.Email
+ - User.PhoneNumber
+ - User.NID
 

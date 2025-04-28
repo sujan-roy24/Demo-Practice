@@ -98,6 +98,10 @@ Follow these steps to set up the project locally:
      ```
    You should now be able to access the application locally.
 ---
+## Resources
+- [Project Documentation](docs/)
+- [Development Setup](docs/setup.md)
+- [Contributing Guidelines](CONTRIBUTING.md)
 
 
 # 🚇 QR Code Metro Based Ticketing System [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)

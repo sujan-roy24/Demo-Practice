@@ -144,46 +144,30 @@ This document describes the database schema for the QR Code Based Metro Ticketin
 
 ## 🛡️ Indexes & Constraints
 **Primary Keys:**
-Id column in every table.
+ - Id column in every table.
 
-Foreign Keys:
+**Foreign Keys:**
 
-StationDistance.Station1Id, StationDistance.Station2Id → Station.Id
+ - StationDistance.Station1Id, StationDistance.Station2Id → Station.Id
+ - Ticket.UserId → User.Id
+ - Ticket.OriginStationId → Station.Id
+ - Ticket.DestinationStationId → Station.Id
+ - Transaction.WalletId → Wallet.Id
+ - Trip.UserId → User.Id
+ - Trip.TicketId → Ticket.Id
+ - Trip.EntryStationId → Station.Id
+ - Trip.ExitStationId → Station.Id
+ - Wallet.UserId → User.Id
 
-Ticket.UserId → User.Id
-
-Ticket.OriginStationId → Station.Id
-
-Ticket.DestinationStationId → Station.Id
-
-Transaction.WalletId → Wallet.Id
-
-Trip.UserId → User.Id
-
-Trip.TicketId → Ticket.Id
-
-Trip.EntryStationId → Station.Id
-
-Trip.ExitStationId → Station.Id
-
-Wallet.UserId → User.Id
-
-Unique Constraints:
-
-Admin.Email
-
-User.Email
-
-User.PhoneNumber
-
-User.NID
+**Unique Constraints:**
+ - Admin.Email
+ - User.Email
+ - User.PhoneNumber
+ - User.NID
 
 ## ✅ Summary
-Normalized database design (no redundancy).
-
-Optimized for high read/write performance (Redis fallback).
-
-Indexes boost critical operations (QR code lookup, login).
-
-Secure architecture with encryption and authentication.
+ - Normalized database design (no redundancy).
+ - Optimized for high read/write performance (Redis fallback).
+ - Indexes boost critical operations (QR code lookup, login).
+ - Secure architecture with encryption and authentication.
 

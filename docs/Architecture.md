@@ -64,3 +64,12 @@ It ensures scalability, maintainability, and high performance for metro ticket o
      - JWT-based authentication protects API endpoints.
       
      - QR codes expire after one-time use to prevent unauthorized re-entry.
+  ## ✅ Summary:
+
+ - Layered architecture ensures clean separation of concerns.
+ 
+ - Redis + SQL hybrid model gives both performance and reliability.
+ 
+ - Focus on high availability, security, and fault tolerance.
+ 
+

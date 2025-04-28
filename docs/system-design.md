@@ -6,7 +6,7 @@ The QR Code Metro Ticketing System is built to provide fast and secure metro ent
 ![Alt text](Images/system-architecture-one.svg)
 ## 2. High-Level Architecture
 - User Interface: ASP.NET MVC application.
-- Backend API: ASP.NET Core services.
+- Backend: ASP.NET Core services.
 - Database: SQL Server 2022 for storing user, station, and ticket information.
 - Caching Layer: Redis for fast QR validation and session storage.
 

@@ -1,64 +1,71 @@
-
-# 📄 User Guides
-## Passenger Web Application
-**Features**
- - User Registration / Login
- - Purchase Prepaid Ticket
+# 📄 User Guide
+## 🚇 User Web Application
+**✨ Features**
+ - URL: https://localhost:7157/home
+ - Register / Login
+ - Purchase Prepaid Tickets
  - Use Rapid Pass (Postpaid Account)
- - Scan QR at Entry and Exit Gates
- - View Travel History & Fare Details
+ - Generate and Scan QR Code at Gates
+ - View Travel History and Fare Details
 
-**User Flow with Screenshots**
-1. Home Screen
- [Screenshot: Home Page]
+## ⚙️ System Operations (Gate Scanning)
+**✨ Entry And Exit Scanning**
+ - URL: https://localhost:7157/System/Scanner/index
 
-2. Buy Ticket
- [Screenshot: Ticket Purchase Page]
+  **Entry Process:**
+  
+   - Scan QR code at Entry Gate
+   - If Valid → Gate Opens
+   - If Invalid → Show Error Message
+  
+  **Exit Process:**
+  
+   - Scan QR code at Exit Gate
+   - Fare is calculated and deducted
+   - Gate Opens upon Successful Validation
 
-3. Generate QR
- [Screenshot: QR Code Display Page]
+## 🛠️ Admin Dashboard
+**✨ Features**
 
-4. Entry Validation
+Add / Manage Metro Stations
 
-   - Scan the QR at Entry Gate
-   -  Validation Successful => Gate Opens
-   -   If invalid => Error Message
+Manage Fare Rules (Distance or Zone-based)
 
-5. Exit Validation
+Manage User Accounts
 
-   - Scan the QR at Exit Gate
-   -  System calculates fare and deducts balance
-   -   Gate opens on success.
+View Passenger Travel Histories
 
-## Admin Dashboard
-**Features**
- - Add/Manage Metro Stations
- - Manage Fare Rules (by Distance/Zone)
- - Manage Users
- - View Passenger Travel History
- - View Revenue Reports
+View Revenue and Travel Reports
 
-**Admin Flow**
-1. Login to Admin Dashboard
- - URL: /admin/login
+💼 Admin Flow
+Login to Admin Dashboard
 
-2. Station Management
+URL: /admin/login
 
- - Add new stations
- - Update existing station info
+Station Management
 
-3. Fare Management
+Add Station: /admin/stations/add
 
- - Set base fare
- - Set per-kilometer fare
- - Define fare zones if applicable
+Update Station: /admin/stations/edit/{stationId}
 
-4. User Management
+Fare Management
 
- - View list of passengers
- - Block/Suspend accounts if necessary
+Set Base Fare: /admin/fares/set-base
 
-5. Reports
+Set Per-Kilometer Fare: /admin/fares/set-per-km
 
- - View real-time travel statistics
- - View revenue reports (daily, monthly)
+Manage Fare Zones: /admin/fares/manage-zones
+
+User Management
+
+View Users: /admin/users
+
+Block User: /admin/users/block/{userId}
+
+Suspend User: /admin/users/suspend/{userId}
+
+Reports
+
+Travel Statistics: /admin/reports/travel
+
+Revenue Reports: /admin/reports/revenue

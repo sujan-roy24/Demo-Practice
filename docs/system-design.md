@@ -145,7 +145,7 @@ erDiagram
 
 ## 🎟️ State Diagram For Ticket
 
-### Purchasing QR Ticket
+### 1. Purchasing QR Ticket
 
 ```mermaid
 stateDiagram-v2
@@ -184,7 +184,7 @@ stateDiagram-v2
         Rollback --> RefundInitiated
     }
 ```
-### Rapid Pass QR Ticket
+### 2. Rapid Pass QR Ticket
 
 ```mermaid
 stateDiagram-v2
@@ -224,8 +224,5 @@ stateDiagram-v2
     Timeout --> PenaltyApplied
     PenaltyApplied --> FareCalculation
     
-    JourneyComplete --> Dispute: Irregular exit scan
-    Dispute --> ManualReview
-    ManualReview --> FareAdjusted
 ```
 ---

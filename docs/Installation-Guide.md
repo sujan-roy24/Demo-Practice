@@ -6,7 +6,7 @@
 ```mermaid
 stateDiagram-v2
     [*] --> Idle
-    Start --> StationSelection: Passenger initiates
+    Idle --> StationSelection: Passenger initiates
     
     state StationSelection {
         [*] --> OriginSelected
@@ -46,7 +46,7 @@ stateDiagram-v2
 stateDiagram-v2
     [*] --> Idle
 
-    Start --> RapidPassEligibilityCheck: Passenger requests Rapid Pass
+    Idle --> RapidPassEligibilityCheck: Passenger requests Rapid Pass
     
     state RapidPassEligibilityCheck {
         [*] --> WalletBalanceVerification

@@ -41,8 +41,8 @@ Experience QR Code Metro Based Ticketing System in action by visiting our live d
 
 [![Live Demo](https://img.shields.io/badge/View%20Live-Click%20Here-brightgreen?style=for-the-badge&logo=googlechrome&logoColor=white)](https://dhakametro.bsite.net/)
 
-## 📄 User Guide
-### 🚇 User Web Application
+## 📋 User Guide
+### ♂️ User
 **✨ Features**
  - URL: https://localhost:7157/home
  - Register / Login

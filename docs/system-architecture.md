@@ -3,7 +3,7 @@
 
 ## 1. System Overview
 The QR Code Metro Ticketing System is built to provide fast and secure metro entry/exit using QR codes, leveraging .NET 8, Redis, and SQL Server.
-![Alt text](Images/system-architecture-one.svg)
+![Alt text](Images/system-architecture.svg)
 ## 2. High-Level Architecture
 - User Interface: ASP.NET MVC application.
 - Backend API: ASP.NET Core services.

@@ -7,7 +7,7 @@
 ![Redis](https://img.shields.io/badge/Redis-%23DD0031.svg?logo=redis&logoColor=white) 
 ![JWT](https://img.shields.io/badge/JWT-Auth-%23000000?logo=jsonwebtokens) 
 ![QRCoder](https://img.shields.io/badge/QR_Code-Generator-%23000000?logo=qrcode)
-![Alt text](docs/Images/train-anim1.svg)
+![Alt text](docs/Images/train-animation.svg)
 
 ## Team Information: NetNinjas
 

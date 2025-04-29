@@ -26,46 +26,31 @@
 
 ## 🛠️ Admin Dashboard
 **✨ Features**
+ - Add / Manage Metro Stations
+ - Manage Fare Rules (Distance or Zone-based)
+ - Manage User Accounts
+ - View Passenger Travel Histories
+ - View Revenue and Travel Reports
 
-Add / Manage Metro Stations
+### 💼 Admin Flow
+ - Login to Admin Dashboard
+ - URL: https://localhost:7157/Admin/
 
-Manage Fare Rules (Distance or Zone-based)
+**Station Management**
+- Add Station
+- Update Station
 
-Manage User Accounts
+**Fare Management**
 
-View Passenger Travel Histories
+ - Set Base Fare
+ - Set Per-Kilometer Fare
+ - Manage Fare Zones
 
-View Revenue and Travel Reports
+**User Management**
+ - View Users
+ - Block User
+ - Suspend User
 
-💼 Admin Flow
-Login to Admin Dashboard
-
-URL: /admin/login
-
-Station Management
-
-Add Station: /admin/stations/add
-
-Update Station: /admin/stations/edit/{stationId}
-
-Fare Management
-
-Set Base Fare: /admin/fares/set-base
-
-Set Per-Kilometer Fare: /admin/fares/set-per-km
-
-Manage Fare Zones: /admin/fares/manage-zones
-
-User Management
-
-View Users: /admin/users
-
-Block User: /admin/users/block/{userId}
-
-Suspend User: /admin/users/suspend/{userId}
-
-Reports
-
-Travel Statistics: /admin/reports/travel
-
-Revenue Reports: /admin/reports/revenue
+**Reports**
+ - Travel Statistics
+ - Revenue Reports
